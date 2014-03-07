@@ -1,0 +1,33 @@
+#!/bin/bash
+#
+# Wait until a specified user logs on
+#
+
+if [ "$#" -ne 1 ]
+then
+       echo "Usage: mon user"
+       exit 1
+fi
+
+user="$1"
+
+#
+# Check every minute for user logging on
+#
+
+until who | grep -w "^$user " > tmp
+do
+        sleep 6000
+done
+
+#
+# When we reach this point, the user has logged on
+#
+cat tmp;
+#sed -n 1 tmp;
+#cat tmp | cut -f2 -d"<TAB>"
+
+awk '{ print $1$2; }' tmp
+#echo "$user has logged on"
+
+

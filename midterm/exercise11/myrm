@@ -1,0 +1,54 @@
+#!/bin/bash
+default_max=3;
+
+if [[ ! -z $MAXFILES ]];
+then
+ echo "max files is not zero"
+ echo "max is .."$MAXFILES
+ 
+  if [ $# -gt $MAXFILES ];
+  then
+     echo "Max is set to 100 you can not remove more than that"
+   else
+      echo "Files count is Less than max we can remove those files"
+      files=$@;
+      echo "files are --" $files;
+      for x in  $files
+      do
+        rm $x;
+      done
+   fi
+   
+   else
+    echo "the number of files "$#
+    echo "the default max is --" $default_max;
+   
+   if [ $default_max -gt "$#" ]
+     then
+     echo "Do u want to remove "$# "files (y/n)";
+     read option;
+     echo "The option u enter is ==="$option;
+    
+     
+     
+     if [ $option == 'y' ];
+     then
+         files=$@;
+      echo "deleted files are --" $files;
+      for x in  $files
+      do
+        rm $x;
+      done
+     fi
+     
+       if [ $option == 'n' ];
+     then
+        echo "nothing is deleted"
+      
+     fi
+     
+     
+     else
+        echo "Wrong input"
+     fi 
+fi

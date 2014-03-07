@@ -1,0 +1,11 @@
+fails for some reason (for example, if it can't create the destination file), or if the arguments aren't correctly
+specified (for example, wrong number of arguments, or more than two arguments and the last one isn't a directory). 
+In the case of grep, an exit status of zero (success) is returned if it finds the specified pattern in at least one 
+of the files; a nonzero value is returned if it can't find the pattern or if an error occurs (the arguments aren't 
+correctly specified, or it can't open one of the files).
+In a pipeline, the exit status is that of the last command in the pipe. So in
+who | grep fred
+the exit status of the grep is used by the shell as the exit status for the pipeline. 
+In this case, an exit status of zero means that fred was found in who's output
+(that is, fred was logged on at the time that this command was executed).
+The $? Variable

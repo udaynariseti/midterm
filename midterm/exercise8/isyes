@@ -1,0 +1,15 @@
+#!/bin/bash
+option="$1";
+
+if [ opt=y ];
+then
+   echo "exiting with 0";
+   exit 0;
+fi
+
+tmp="yes"
+case $1 in	
+   y) opt=y;
+   yes) opt=y;
+   'Yes') opt=y;
+esac

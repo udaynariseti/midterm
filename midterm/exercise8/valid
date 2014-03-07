@@ -1,0 +1,13 @@
+#!/bin/bash
+
+x=$(echo $1 | grep '^[a-z_A-Z]');
+
+if [ $? -eq 0 ];
+then
+  echo "valid "
+  exit 0;
+else
+  echo "not valid"
+  exit 1;
+fi
+

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+sed $1 $2 > tmp;
+
+if [ $? -eq 0 ];
+then
+  echo "The operation is success"
+  mv tmp $2;
+fi
